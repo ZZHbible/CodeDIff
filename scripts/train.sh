@@ -1,0 +1,16 @@
+CUDA_VISIBLE_DEVICES=0 nohup python -u -m torch.distributed.launch --nproc_per_node=1 --master_port=12233 --use_env run_train.py \
+--diff_steps 2000 \
+--lr 0.0001 \
+--learning_steps 50000 \
+--save_interval 10000 \
+--seed 102 \
+--noise_schedule sqrt \
+--hidden_dim 128 \
+--bsz 256 \
+--microbatch 32 \
+--dataset code2summary_python \
+--data_dir path/to/dataset \
+--vocab bert \
+--seq_len 512 \
+--schedule_sampler lossaware \
+--notes test-code2summary_python > log_python.txt 2>&1 &
